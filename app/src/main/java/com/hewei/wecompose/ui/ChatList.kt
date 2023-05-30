@@ -2,7 +2,6 @@ package com.hewei.wecompose.ui
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
@@ -39,11 +38,12 @@ import com.hewei.wecompose.ui.theme.WeComposeTheme
 @Composable
 fun ChatList(chats: List<Chat>) {
     // 等價 RecyclerView
-    Box(
+    Column(
         Modifier
             .background(color = WeComposeTheme.colors.background)
             .fillMaxSize()
     ) {
+        WeTopBar(title = "偽信")
         LazyColumn(
             Modifier
                 .background(color = WeComposeTheme.colors.listItem)
@@ -130,40 +130,73 @@ fun ChatListPreview() {
         )
     }
 
-    ChatList(
-        chats
-    )
+    WeComposeTheme(WeComposeTheme.Theme.Light) {
+        ChatList(
+            chats
+        )
+    }
 }
-
 
 @Preview(showBackground = true)
 @Composable
-fun ChatListItemPreview() {
-    var chat by remember {
+fun ChatListPreviewDark() {
+    var chats by remember {
         mutableStateOf(
-            Chat(
-                friend = User("danialhan", "韓國瑜珈老師", R.drawable.avatar_danial_han),
-                mutableStateListOf(
-                    Msg(
-                        User("danialhan", "韓國瑜珈老師", R.drawable.avatar_danial_han),
-                        "發大財",
-                        "14:28"
-                    ),
-                    Msg(
-                        User("danialhan", "韓國瑜珈老師", R.drawable.avatar_danial_han),
-                        "挖石油！",
-                        "14:28"
-                    ),
-                    Msg(
-                        User("danialhan", "韓國瑜珈老師", R.drawable.avatar_danial_han),
-                        "發大財！！",
-                        "14:28"
-                    ).apply { read = false },
+            listOf( //List<Chat>
+                Chat(
+                    friend = User("ingwen", "英文老師", R.drawable.avatar_ing_wen),
+                    mutableStateListOf(
+                        Msg(User("ingwen", "英文老師", R.drawable.avatar_ing_wen), "勞工是我心中最軟的一塊", "14:20"),
+                        Msg(User("ingwen", "英文老師", R.drawable.avatar_ing_wen), "徵：新四濟高端戰士", "14:20"),
+                    )
+                ),
+                Chat(
+                    friend = User("danialhan", "韓國瑜珈老師", R.drawable.avatar_danial_han),
+                    mutableStateListOf(
+                        Msg(User("danialhan", "韓國瑜珈老師", R.drawable.avatar_danial_han), "發大財", "14:28"),
+                        Msg(User("danialhan", "韓國瑜珈老師", R.drawable.avatar_danial_han), "挖石油！", "14:28"),
+                        Msg(User("danialhan", "韓國瑜珈老師", R.drawable.avatar_danial_han), "發大財！！", "14:28").apply { read = false },
+                    )
                 )
             )
         )
     }
-    ChatListItem(
-        chat
-    )
+
+    WeComposeTheme(WeComposeTheme.Theme.Dark) {
+        ChatList(
+            chats
+        )
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun ChatListPreviewNewYear() {
+    var chats by remember {
+        mutableStateOf(
+            listOf( //List<Chat>
+                Chat(
+                    friend = User("ingwen", "英文老師", R.drawable.avatar_ing_wen),
+                    mutableStateListOf(
+                        Msg(User("ingwen", "英文老師", R.drawable.avatar_ing_wen), "勞工是我心中最軟的一塊", "14:20"),
+                        Msg(User("ingwen", "英文老師", R.drawable.avatar_ing_wen), "徵：新四濟高端戰士", "14:20"),
+                    )
+                ),
+                Chat(
+                    friend = User("danialhan", "韓國瑜珈老師", R.drawable.avatar_danial_han),
+                    mutableStateListOf(
+                        Msg(User("danialhan", "韓國瑜珈老師", R.drawable.avatar_danial_han), "發大財", "14:28"),
+                        Msg(User("danialhan", "韓國瑜珈老師", R.drawable.avatar_danial_han), "挖石油！", "14:28"),
+                        Msg(User("danialhan", "韓國瑜珈老師", R.drawable.avatar_danial_han), "發大財！！", "14:28").apply { read = false },
+                    )
+                )
+            )
+        )
+    }
+
+    WeComposeTheme(WeComposeTheme.Theme.NewYear) {
+        ChatList(
+            chats
+        )
+    }
 }

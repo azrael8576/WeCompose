@@ -9,6 +9,7 @@ import com.hewei.wecompose.R
 import com.hewei.wecompose.data.Chat
 import com.hewei.wecompose.data.Msg
 import com.hewei.wecompose.data.User
+import com.hewei.wecompose.ui.theme.WeComposeTheme
 
 class WeViewModel : ViewModel() {
     var chats by mutableStateOf(
@@ -32,5 +33,5 @@ class WeViewModel : ViewModel() {
     )
 
     var selectedTab by mutableStateOf(0)
-
+    var theme by mutableStateOf(WeComposeTheme.Theme.Light)
 }

@@ -22,11 +22,11 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            WeComposeTheme {
-                Column {
-                    // 我們創建了一個 WeViewModel 實例（需要在 build.gradle 文件中添加 lifecycle.viewmodel.compose.viewModel 依賴）
-                    val viewModel: WeViewModel = viewModel()
+            // 我們創建了一個 WeViewModel 實例（需要在 build.gradle 文件中添加 lifecycle.viewmodel.compose.viewModel 依賴）
+            val viewModel: WeViewModel = viewModel()
 
+            WeComposeTheme(viewModel.theme) {
+                Column {
                     // 等價 ViewPager
                     HorizontalPager(pageCount = 4, Modifier.weight(1f)) { page ->
                         when (page) {
