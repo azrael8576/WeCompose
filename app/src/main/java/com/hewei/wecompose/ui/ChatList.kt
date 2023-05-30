@@ -15,6 +15,11 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Divider
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateListOf
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -22,9 +27,13 @@ import androidx.compose.ui.draw.drawWithContent
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.hewei.wecompose.R
 import com.hewei.wecompose.data.Chat
+import com.hewei.wecompose.data.Msg
+import com.hewei.wecompose.data.User
 import com.hewei.wecompose.ui.theme.WeComposeTheme
 
 @Composable
@@ -94,4 +103,67 @@ fun Modifier.unread(show: Boolean, color: Color): Modifier = this.drawWithConten
     if (show) {
         drawCircle(color, 5.dp.toPx(), Offset(size.width - 1.dp.toPx(), 1.dp.toPx()))
     }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun ChatListPreview() {
+    var chats by remember {
+        mutableStateOf(
+            listOf( //List<Chat>
+                Chat(
+                    friend = User("ingwen", "英文老師", R.drawable.avatar_ing_wen),
+                    mutableStateListOf(
+                        Msg(User("ingwen", "英文老師", R.drawable.avatar_ing_wen), "勞工是我心中最軟的一塊", "14:20"),
+                        Msg(User("ingwen", "英文老師", R.drawable.avatar_ing_wen), "徵：新四濟高端戰士", "14:20"),
+                    )
+                ),
+                Chat(
+                    friend = User("danialhan", "韓國瑜珈老師", R.drawable.avatar_danial_han),
+                    mutableStateListOf(
+                        Msg(User("danialhan", "韓國瑜珈老師", R.drawable.avatar_danial_han), "發大財", "14:28"),
+                        Msg(User("danialhan", "韓國瑜珈老師", R.drawable.avatar_danial_han), "挖石油！", "14:28"),
+                        Msg(User("danialhan", "韓國瑜珈老師", R.drawable.avatar_danial_han), "發大財！！", "14:28").apply { read = false },
+                    )
+                )
+            )
+        )
+    }
+
+    ChatList(
+        chats
+    )
+}
+
+
+@Preview(showBackground = true)
+@Composable
+fun ChatListItemPreview() {
+    var chat by remember {
+        mutableStateOf(
+            Chat(
+                friend = User("danialhan", "韓國瑜珈老師", R.drawable.avatar_danial_han),
+                mutableStateListOf(
+                    Msg(
+                        User("danialhan", "韓國瑜珈老師", R.drawable.avatar_danial_han),
+                        "發大財",
+                        "14:28"
+                    ),
+                    Msg(
+                        User("danialhan", "韓國瑜珈老師", R.drawable.avatar_danial_han),
+                        "挖石油！",
+                        "14:28"
+                    ),
+                    Msg(
+                        User("danialhan", "韓國瑜珈老師", R.drawable.avatar_danial_han),
+                        "發大財！！",
+                        "14:28"
+                    ).apply { read = false },
+                )
+            )
+        )
+    }
+    ChatListItem(
+        chat
+    )
 }
