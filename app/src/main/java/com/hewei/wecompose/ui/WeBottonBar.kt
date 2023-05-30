@@ -81,7 +81,7 @@ fun TabItem(@DrawableRes resId: Int, title: String, tint: Color, modifier: Modif
         modifier.padding(vertical = 8.dp),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Icon(painterResource(id = resId), title, Modifier.size(24.dp), tint = tint)
+        Icon(painterResource(id = resId), title, Modifier.unread(false, WeComposeTheme.colors.badge).size(24.dp), tint = tint)
         Text(text = title, fontSize = 11.sp, color = tint)
     }
 }
