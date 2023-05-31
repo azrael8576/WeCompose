@@ -34,4 +34,19 @@ class WeViewModel : ViewModel() {
 
     var selectedTab by mutableStateOf(0)
     var theme by mutableStateOf(WeComposeTheme.Theme.Light)
+    var currentChat: Chat? by mutableStateOf(null)
+    var chatting by mutableStateOf(false)
+
+    fun startChat(chat: Chat) {
+        chatting = true
+        currentChat = chat
+    }
+
+    fun endChat(): Boolean {
+        if (chatting) {
+            chatting = false
+            return true
+        }
+        return false
+    }
 }

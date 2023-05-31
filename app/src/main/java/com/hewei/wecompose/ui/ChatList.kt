@@ -2,6 +2,7 @@ package com.hewei.wecompose.ui
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
@@ -29,11 +30,13 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.hewei.wecompose.R
 import com.hewei.wecompose.data.Chat
 import com.hewei.wecompose.data.Msg
 import com.hewei.wecompose.data.User
 import com.hewei.wecompose.ui.theme.WeComposeTheme
+import com.hewei.wecompose.viewmodels.WeViewModel
 
 @Composable
 fun ChatList(chats: List<Chat>) {
@@ -65,8 +68,13 @@ fun ChatList(chats: List<Chat>) {
 
 @Composable
 private fun ChatListItem(chat: Chat) {
+    val viewModel: WeViewModel = viewModel()
     Row(
-        Modifier.fillMaxWidth(),
+        Modifier
+            .clickable {
+                viewModel.startChat(chat)
+            }
+            .fillMaxWidth(),
     ) {
         Image(
             painter = painterResource(id = chat.friend.avatar),
@@ -114,16 +122,36 @@ fun ChatListPreview() {
                 Chat(
                     friend = User("ingwen", "英文老師", R.drawable.avatar_ing_wen),
                     mutableStateListOf(
-                        Msg(User("ingwen", "英文老師", R.drawable.avatar_ing_wen), "勞工是我心中最軟的一塊", "14:20"),
-                        Msg(User("ingwen", "英文老師", R.drawable.avatar_ing_wen), "徵：新四濟高端戰士", "14:20"),
+                        Msg(
+                            User("ingwen", "英文老師", R.drawable.avatar_ing_wen),
+                            "勞工是我心中最軟的一塊",
+                            "14:20"
+                        ),
+                        Msg(
+                            User("ingwen", "英文老師", R.drawable.avatar_ing_wen),
+                            "徵：新四濟高端戰士",
+                            "14:20"
+                        ),
                     )
                 ),
                 Chat(
                     friend = User("danialhan", "韓國瑜珈老師", R.drawable.avatar_danial_han),
                     mutableStateListOf(
-                        Msg(User("danialhan", "韓國瑜珈老師", R.drawable.avatar_danial_han), "發大財", "14:28"),
-                        Msg(User("danialhan", "韓國瑜珈老師", R.drawable.avatar_danial_han), "挖石油！", "14:28"),
-                        Msg(User("danialhan", "韓國瑜珈老師", R.drawable.avatar_danial_han), "發大財！！", "14:28").apply { read = false },
+                        Msg(
+                            User("danialhan", "韓國瑜珈老師", R.drawable.avatar_danial_han),
+                            "發大財",
+                            "14:28"
+                        ),
+                        Msg(
+                            User("danialhan", "韓國瑜珈老師", R.drawable.avatar_danial_han),
+                            "挖石油！",
+                            "14:28"
+                        ),
+                        Msg(
+                            User("danialhan", "韓國瑜珈老師", R.drawable.avatar_danial_han),
+                            "發大財！！",
+                            "14:28"
+                        ).apply { read = false },
                     )
                 )
             )
@@ -146,16 +174,36 @@ fun ChatListPreviewDark() {
                 Chat(
                     friend = User("ingwen", "英文老師", R.drawable.avatar_ing_wen),
                     mutableStateListOf(
-                        Msg(User("ingwen", "英文老師", R.drawable.avatar_ing_wen), "勞工是我心中最軟的一塊", "14:20"),
-                        Msg(User("ingwen", "英文老師", R.drawable.avatar_ing_wen), "徵：新四濟高端戰士", "14:20"),
+                        Msg(
+                            User("ingwen", "英文老師", R.drawable.avatar_ing_wen),
+                            "勞工是我心中最軟的一塊",
+                            "14:20"
+                        ),
+                        Msg(
+                            User("ingwen", "英文老師", R.drawable.avatar_ing_wen),
+                            "徵：新四濟高端戰士",
+                            "14:20"
+                        ),
                     )
                 ),
                 Chat(
                     friend = User("danialhan", "韓國瑜珈老師", R.drawable.avatar_danial_han),
                     mutableStateListOf(
-                        Msg(User("danialhan", "韓國瑜珈老師", R.drawable.avatar_danial_han), "發大財", "14:28"),
-                        Msg(User("danialhan", "韓國瑜珈老師", R.drawable.avatar_danial_han), "挖石油！", "14:28"),
-                        Msg(User("danialhan", "韓國瑜珈老師", R.drawable.avatar_danial_han), "發大財！！", "14:28").apply { read = false },
+                        Msg(
+                            User("danialhan", "韓國瑜珈老師", R.drawable.avatar_danial_han),
+                            "發大財",
+                            "14:28"
+                        ),
+                        Msg(
+                            User("danialhan", "韓國瑜珈老師", R.drawable.avatar_danial_han),
+                            "挖石油！",
+                            "14:28"
+                        ),
+                        Msg(
+                            User("danialhan", "韓國瑜珈老師", R.drawable.avatar_danial_han),
+                            "發大財！！",
+                            "14:28"
+                        ).apply { read = false },
                     )
                 )
             )
@@ -178,16 +226,36 @@ fun ChatListPreviewNewYear() {
                 Chat(
                     friend = User("ingwen", "英文老師", R.drawable.avatar_ing_wen),
                     mutableStateListOf(
-                        Msg(User("ingwen", "英文老師", R.drawable.avatar_ing_wen), "勞工是我心中最軟的一塊", "14:20"),
-                        Msg(User("ingwen", "英文老師", R.drawable.avatar_ing_wen), "徵：新四濟高端戰士", "14:20"),
+                        Msg(
+                            User("ingwen", "英文老師", R.drawable.avatar_ing_wen),
+                            "勞工是我心中最軟的一塊",
+                            "14:20"
+                        ),
+                        Msg(
+                            User("ingwen", "英文老師", R.drawable.avatar_ing_wen),
+                            "徵：新四濟高端戰士",
+                            "14:20"
+                        ),
                     )
                 ),
                 Chat(
                     friend = User("danialhan", "韓國瑜珈老師", R.drawable.avatar_danial_han),
                     mutableStateListOf(
-                        Msg(User("danialhan", "韓國瑜珈老師", R.drawable.avatar_danial_han), "發大財", "14:28"),
-                        Msg(User("danialhan", "韓國瑜珈老師", R.drawable.avatar_danial_han), "挖石油！", "14:28"),
-                        Msg(User("danialhan", "韓國瑜珈老師", R.drawable.avatar_danial_han), "發大財！！", "14:28").apply { read = false },
+                        Msg(
+                            User("danialhan", "韓國瑜珈老師", R.drawable.avatar_danial_han),
+                            "發大財",
+                            "14:28"
+                        ),
+                        Msg(
+                            User("danialhan", "韓國瑜珈老師", R.drawable.avatar_danial_han),
+                            "挖石油！",
+                            "14:28"
+                        ),
+                        Msg(
+                            User("danialhan", "韓國瑜珈老師", R.drawable.avatar_danial_han),
+                            "發大財！！",
+                            "14:28"
+                        ).apply { read = false },
                     )
                 )
             )
