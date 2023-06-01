@@ -82,7 +82,7 @@ private fun ChatListItem(chat: Chat) {
             modifier = Modifier
                 .padding(8.dp)
                 .size(48.dp)
-                .unread(!chat.message.last().read, WeComposeTheme.colors.badge)
+                .unread(!chat.msgs.last().read, WeComposeTheme.colors.badge)
                 .clip(RoundedCornerShape(4.dp))
         )
         Column(
@@ -92,13 +92,13 @@ private fun ChatListItem(chat: Chat) {
         ) {
             Text(chat.friend.name, fontSize = 17.sp, color = WeComposeTheme.colors.textPrimary)
             Text(
-                chat.message.last().text,
+                chat.msgs.last().text,
                 fontSize = 14.sp,
                 color = WeComposeTheme.colors.textSecondary
             )
         }
         Text(
-            chat.message.last().time,
+            chat.msgs.last().time,
             Modifier.padding(8.dp, 8.dp, 12.dp, 8.dp),
             fontSize = 11.sp, color = WeComposeTheme.colors.textSecondary
         )
@@ -124,13 +124,28 @@ fun ChatListPreview() {
                     mutableStateListOf(
                         Msg(
                             User("ingwen", "英文老師", R.drawable.avatar_ing_wen),
-                            "勞工是我心中最軟的一塊",
+                            "徵：新四濟高端戰士",
                             "14:20"
                         ),
                         Msg(
+                            User.Me,
+                            "安安我想領失業補助",
+                            "14:21"
+                        ),
+                        Msg(
                             User("ingwen", "英文老師", R.drawable.avatar_ing_wen),
-                            "徵：新四濟高端戰士",
-                            "14:20"
+                            "勞工是我心中最軟的一塊！",
+                            "14:22"
+                        ),
+                        Msg(
+                            User.Me,
+                            "我想租社會住宅",
+                            "14:23"
+                        ),
+                        Msg(
+                            User("ingwen", "英文老師", R.drawable.avatar_ing_wen),
+                            "\uD83E\uDDA2…勞工是我心中最軟的一塊！",
+                            "14:25"
                         ),
                     )
                 ),
@@ -148,9 +163,14 @@ fun ChatListPreview() {
                             "14:28"
                         ),
                         Msg(
-                            User("danialhan", "韓國瑜珈老師", R.drawable.avatar_danial_han),
-                            "發大財！！",
+                            User.Me,
+                            "迪士尼！",
                             "14:28"
+                        ),
+                        Msg(
+                            User("danialhan", "韓國瑜珈老師", R.drawable.avatar_danial_han),
+                            "招商迪士尼！！！挖石油！",
+                            "14:29"
                         ).apply { read = false },
                     )
                 )

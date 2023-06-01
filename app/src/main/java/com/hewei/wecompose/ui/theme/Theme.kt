@@ -20,7 +20,8 @@ private val DarkColorScheme = WeComposeColors(
     background = BwBg0,
     listItem = BwBg20,
     divider = Bw0Alpha05,
-    chatPage = Brand90,
+    chatPage = BwBg0,
+    textPrimaryMe = BwBg0,
     textPrimary = BwBg97,
     textSecondary = Bw0Alpha05,
     onBackground = Brand90,
@@ -29,8 +30,8 @@ private val DarkColorScheme = WeComposeColors(
     badge = Red80,
     onBadge = Brand90,
     bubbleMe = Brand90,
-    bubbleOthers = Brand90,
-    textFieldBackground = Brand90,
+    bubbleOthers = Bw100Alpha01,
+    textFieldBackground = Bw100Alpha03,
     more = Brand90,
     chatPageBgAlpha = 0f,
 )
@@ -40,7 +41,8 @@ private val LightColorScheme = WeComposeColors(
     background = Bw0Alpha01,
     listItem = Bw100,
     divider = Bw100Alpha05,
-    chatPage = Brand90,
+    chatPage = Bw0Alpha01,
+    textPrimaryMe = BwBg0,
     textPrimary = Bw100Alpha01,
     textSecondary = Bw100Alpha05,
     onBackground = Brand90,
@@ -49,8 +51,8 @@ private val LightColorScheme = WeComposeColors(
     badge = Red80,
     onBadge = Brand90,
     bubbleMe = Brand90,
-    bubbleOthers = Brand90,
-    textFieldBackground = Brand90,
+    bubbleOthers = BwBg97,
+    textFieldBackground = BwBg100,
     more = Brand90,
     chatPageBgAlpha = 0f
 )
@@ -60,7 +62,8 @@ private val NewYearColorScheme = WeComposeColors(
     background = Red80,
     listItem = Red90,
     divider = BwBg93,
-    chatPage = Brand90,
+    chatPage = Red80,
+    textPrimaryMe = BwBg0,
     textPrimary = BwBg97,
     textSecondary = BwBg93,
     onBackground = Brand90,
@@ -69,8 +72,8 @@ private val NewYearColorScheme = WeComposeColors(
     badge = Orange170,
     onBadge = Brand90,
     bubbleMe = Brand90,
-    bubbleOthers = Brand90,
-    textFieldBackground = Brand90,
+    bubbleOthers = Red90,
+    textFieldBackground = Red100,
     more = Brand90,
     chatPageBgAlpha = 1f
 )
@@ -95,6 +98,7 @@ class WeComposeColors(
     listItem : Color,
     divider : Color,
     chatPage : Color,
+    textPrimaryMe : Color,
     textPrimary : Color,
     textSecondary : Color,
     onBackground : Color,
@@ -117,6 +121,8 @@ class WeComposeColors(
     var divider: Color by mutableStateOf(divider)
         private set
     var chatPage: Color by mutableStateOf(chatPage)
+        private set
+    var textPrimaryMe: Color by mutableStateOf(textPrimaryMe)
         private set
     var textPrimary: Color by mutableStateOf(textPrimary)
         private set
@@ -162,6 +168,7 @@ fun WeComposeTheme(
     var listItem = animateColorAsState(targetColors.listItem, TweenSpec(600))
     var divider = animateColorAsState(targetColors.divider, TweenSpec(600))
     var chatPage = animateColorAsState(targetColors.chatPage, TweenSpec(600))
+    var textPrimaryMe = animateColorAsState(targetColors.textPrimaryMe, TweenSpec(600))
     var textPrimary = animateColorAsState(targetColors.textPrimary, TweenSpec(600))
     var textSecondary = animateColorAsState(targetColors.textSecondary, TweenSpec(600))
     var onBackground = animateColorAsState(targetColors.onBackground, TweenSpec(600))
@@ -181,6 +188,7 @@ fun WeComposeTheme(
         listItem = listItem.value,
         divider = divider.value,
         chatPage = chatPage.value,
+        textPrimaryMe = textPrimaryMe.value,
         textPrimary = textPrimary.value,
         textSecondary = textSecondary.value,
         onBackground = onBackground.value,
