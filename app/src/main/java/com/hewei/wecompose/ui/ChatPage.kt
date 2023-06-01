@@ -89,6 +89,7 @@ fun ChatPage(modifier: Modifier = Modifier) {
                     Animatable(0f)
                 }
                 LaunchedEffect(key1 = shakingTime) {
+                    // 防止剛進界面觸發動畫
                     if (shakingTime != 0) {
                         shakingOffset.animateTo(
                             0f,
@@ -282,7 +283,7 @@ fun Modifier.offsetPercent(offsetPercentX: Float = 0f, offsetPercentY: Float = 0
         }
     }
 
-@Preview(showBackground = true)
+@Preview(showBackground = false)
 @Composable
 fun MessageItemPreview() {
     var msg by remember {
@@ -316,7 +317,7 @@ fun MessageItemPreview() {
     }
 }
 
-@Preview(showBackground = true)
+@Preview(showBackground = false)
 @Composable
 fun MessageItemPreviewDark() {
     var msg by remember {
@@ -350,7 +351,7 @@ fun MessageItemPreviewDark() {
     }
 }
 
-@Preview(showBackground = true)
+@Preview(showBackground = false)
 @Composable
 fun MessageItemPreviewNewYear() {
     var msg by remember {

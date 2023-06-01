@@ -72,7 +72,6 @@ class WeViewModel : ViewModel() {
         )
     )
 
-    var selectedTab by mutableStateOf(0)
     var theme by mutableStateOf(WeComposeTheme.Theme.Light)
     var currentChat: Chat? by mutableStateOf(null)
     var chatting by mutableStateOf(false)
