@@ -64,13 +64,58 @@ class WeViewModel : ViewModel() {
                     ),
                     Msg(
                         User("danialhan", "韓國瑜珈老師", R.drawable.avatar_danial_han),
-                        "招商迪士尼！！！挖石油！",
+                        "招商迪士尼！挖石油！",
                         "14:29"
+                    ),
+                    Msg(
+                        User("danialhan", "韓國瑜珈老師", R.drawable.avatar_danial_han),
+                        "發大財！！！！！！",
+                        "14:30"
+                    ).apply { read = false },
+                )
+            ),
+            Chat(
+                friend = User("wayawa", "挖鴨挖老師", R.drawable.avatar_wa_ya_wa),
+                mutableStateListOf(
+                    Msg(
+                        User("wayawa", "挖鴨挖老師", R.drawable.avatar_wa_ya_wa),
+                        "在小小的花园里面",
+                        "14:28"
+                    ),
+                    Msg(
+                        User.Me,
+                        "在小小的4坪套房裡…",
+                        "14:29"
+                    ),
+                    Msg(
+                        User("wayawa", "挖鴨挖老師", R.drawable.avatar_wa_ya_wa),
+                        "挖呀挖呀挖",
+                        "14:30"
+                    ),
+                    Msg(
+                        User("wayawa", "挖鴨挖老師", R.drawable.avatar_wa_ya_wa),
+                        "种小小的种子",
+                        "14:31"
+                    ),
+                    Msg(
+                        User("wayawa", "挖鴨挖老師", R.drawable.avatar_wa_ya_wa),
+                        "开小小的花",
+                        "14:32"
                     ).apply { read = false },
                 )
             )
         )
     )
+
+    var contacts by mutableStateOf(
+        listOf(
+            //List<User>
+            User("ingwen", "英文老師", R.drawable.avatar_ing_wen),
+            User("danialhan", "韓國瑜珈老師", R.drawable.avatar_danial_han),
+            User("wayawa", "挖鴨挖老師", R.drawable.avatar_wa_ya_wa),
+        )
+    )
+
 
     var theme by mutableStateOf(WeComposeTheme.Theme.Light)
     var currentChat: Chat? by mutableStateOf(null)

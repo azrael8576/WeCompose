@@ -24,9 +24,18 @@ fun Home(viewModel: WeViewModel) {
             // Our page content
             when (page) {
                 0 -> ChatList(viewModel.chats)
-                1 -> Box(modifier = Modifier.fillMaxSize().background(color = Color.Red))
-                2 -> Box(modifier = Modifier.fillMaxSize().background(color = Color.Blue))
-                3 -> Box(modifier = Modifier.fillMaxSize().background(color = Color.Green))
+                1 -> ContactList()
+                2 -> Box(
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .background(color = Color.Blue)
+                )
+
+                3 -> Box(
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .background(color = Color.Green)
+                )
             }
         }
 
