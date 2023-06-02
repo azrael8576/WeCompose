@@ -28,11 +28,11 @@ private val DarkColorScheme = WeComposeColors(
     icon = BwBg97,
     iconCurrent = Brand90,
     badge = Red80,
-    onBadge = Brand90,
+    onBadge = BwBg20,
     bubbleMe = Brand90,
     bubbleOthers = Bw100Alpha01,
     textFieldBackground = Bw100Alpha03,
-    more = Brand90,
+    more = Bw0Alpha05,
     chatPageBgAlpha = 0f,
 )
 
@@ -49,11 +49,11 @@ private val LightColorScheme = WeComposeColors(
     icon = BwBg0,
     iconCurrent = Brand90,
     badge = Red80,
-    onBadge = Brand90,
+    onBadge = Bw100,
     bubbleMe = Brand90,
     bubbleOthers = BwBg97,
     textFieldBackground = BwBg100,
-    more = Brand90,
+    more = Bw100Alpha05,
     chatPageBgAlpha = 0f
 )
 
@@ -70,11 +70,11 @@ private val NewYearColorScheme = WeComposeColors(
     icon = BwBg97,
     iconCurrent = Brand90,
     badge = Orange170,
-    onBadge = Brand90,
+    onBadge = Red90,
     bubbleMe = Brand90,
     bubbleOthers = Red90,
     textFieldBackground = Red100,
-    more = Brand90,
+    more = BwBg93,
     chatPageBgAlpha = 1f
 )
 

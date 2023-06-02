@@ -1,16 +1,12 @@
 package com.hewei.wecompose.ui
 
 import androidx.compose.foundation.ExperimentalFoundationApi
-import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import com.hewei.wecompose.viewmodels.WeViewModel
 import kotlinx.coroutines.launch
 
@@ -25,17 +21,8 @@ fun Home(viewModel: WeViewModel) {
             when (page) {
                 0 -> ChatList(viewModel.chats)
                 1 -> ContactList()
-                2 -> Box(
-                    modifier = Modifier
-                        .fillMaxSize()
-                        .background(color = Color.Blue)
-                )
-
-                3 -> Box(
-                    modifier = Modifier
-                        .fillMaxSize()
-                        .background(color = Color.Green)
-                )
+                2 -> DiscoveryList()
+                3 -> MeList()
             }
         }
 
